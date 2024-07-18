@@ -1,0 +1,7 @@
+{
+    "defaultDatabase":"custom-helix-429513-a8",
+    "defaultSchema": "lab1",
+    "assertionSchema": "labs_assertions",
+    "warehouse": "bigquery",
+    "defaultLocation": "europe-west1"
+}
