@@ -1,0 +1,22 @@
+config {
+    type: "operations",
+    hasOutput: true,
+    schema: "input_data"
+}
+
+LOAD data overwrite ${self()} (
+identifiant_musee	STRING,
+region_administrative	STRING,
+departement	STRING,
+commune	STRING,
+nom_officiel_du_musee	STRING,
+adresse	STRING,
+lieu	STRING,
+code_postal	STRING,
+telephone	STRING,
+url	STRING,
+latitude	STRING,
+longitude	STRING,
+ref_deps	STRING
+)
+FROM FILES(format ="CSV", uris = ["gs://bucket_lab_vr/Address.csv"])
