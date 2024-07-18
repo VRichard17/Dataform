@@ -1,0 +1,7 @@
+config { type:"table", name:"test_transac" }
+SELECT
+*
+FROM
+${ref("transactions")}
+LIMIT
+10
