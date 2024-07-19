@@ -1,0 +1,29 @@
+config {
+    type: "table",
+    description: "address staging table",
+    schema: "lab2",
+    name: "stg_address",
+    columns: {
+        address_id: "address identifier",
+        city: "city",
+        state_: "state",
+        postal_code: "postal code",
+        country: "country",
+        created_at: "creation date",
+        updated_at: "last update date"
+    },
+    tags: ["STAGING"],
+    //disabled: true
+}
+
+SELECT
+  SAFE_CAST(address_id AS STRING) AS id_address,
+  SAFE_CAST(city AS STRING) AS city,
+  SAFE_CAST(state_ AS STRING) AS state,
+  SAFE_CAST(postal_code AS int64) AS postal_code,
+  SAFE_CAST(country AS STRING) AS country,
+  SAFE_CAST(created_at AS timestamp) AS created_date,
+  SAFE_CAST(updated_at AS date) AS updated_date
+FROM
+  ${ref("address")}
+QUALIFY row_number() over(partition By id_address)=1
