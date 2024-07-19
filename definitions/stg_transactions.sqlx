@@ -1,0 +1,35 @@
+config {
+    type: "table",
+    description: "transactions staging table",
+    schema: "lab2",
+    name: "stg_transactions",
+    columns: {
+        transaction_id: "transaction identifier",
+        customer_id: "customer identifier",
+        product_id: "product identifier",
+        quantity: "quantity",
+        unite_price: "unit price",
+        transaction_date: "transaction date",
+        payment_method: "payment method",
+        status: "status",
+        created_at: "creation date",
+        updated_at: "last update date"
+    },
+    tags: ["STAGING"],
+    //disabled: true
+}
+
+SELECT
+  SAFE_CAST(transaction_id AS INT64) AS id_transaction,
+  SAFE_CAST(customer_id AS INT64) AS id_customer,
+  SAFE_CAST(product_id AS INT64) AS id_product,
+  SAFE_CAST(quantity AS INT64) AS quantity,
+  SAFE_CAST(unite_price AS FLOAT64) AS unite_price,
+  SAFE_CAST(transaction_date AS DATE) AS transaction_date,
+  SAFE_CAST(payment_method AS STRING) AS payment_method,
+  SAFE_CAST(status AS STRING) AS status,
+  SAFE_CAST(created_at AS DATE) AS created_date,
+  SAFE_CAST(updated_at AS DATE) AS updated_date
+FROM
+  ${ref("transactions")}
+QUALIFY row_number() OVER (PARTITION BY id_transaction) = 1

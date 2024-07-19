@@ -14,8 +14,8 @@ config {
         state: "state",
         postal_code: "postal code",
         country: "country",
-        created_at: "creation date",
-        updated_at: "last update date"
+        created_date: "creation date",
+        updated_date: "last update date"
     },
     tags: ["STAGING"],
     //disabled: true
@@ -32,8 +32,8 @@ SELECT
   state,
   SAFE_CAST(postal_code AS INT64) AS postal_code,
   country,
-  SAFE_CAST(created_at AS DATE) AS created_at,
-  SAFE_CAST(updated_at AS STRING) AS updated_at
+  SAFE_CAST(created_at AS timestamp) AS created_date,
+  SAFE_CAST(updated_at AS timestamp) AS updated_date
 FROM
   ${ref("customer")}
 QUALIFY row_number() OVER (PARTITION BY customer_id) = 1
