@@ -23,7 +23,7 @@ SELECT
   SAFE_CAST(postal_code AS int64) AS postal_code,
   SAFE_CAST(country AS STRING) AS country,
   SAFE_CAST(created_at AS timestamp) AS created_date,
-  SAFE_CAST(updated_at AS date) AS updated_date
+  SAFE.PARSE_DATE('%m/%d/%Y',updated_at) AS updated_date
 FROM
   ${ref("address")}
 QUALIFY row_number() over(partition By id_address)=1
