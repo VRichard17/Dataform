@@ -1,0 +1,17 @@
+config {
+    type: "operations",
+    hasOutput: true,
+    schema: "lab2"
+}
+
+LOAD data overwrite ${self()} (
+address_id	STRING,
+city	STRING,
+state_	STRING,
+postal_code	STRING,
+country STRING,
+created_at	STRING,
+updated_at	STRING,
+
+)
+FROM FILES(format ="CSV", uris = ["gs://bucket_lab_vr/Address.csv"])

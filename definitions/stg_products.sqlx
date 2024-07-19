@@ -1,0 +1,31 @@
+config {
+    type: "table",
+    description: "products staging table",
+    schema: "lab2",
+    name: "stg_products",
+    columns: {
+        id_product: "product identifier",
+        product_name: "product name",
+        description: "description",
+        price: "price",
+        category: "category",
+        id_supplier: "supplier identifier",
+        created_date: "creation date",
+        updated_date: "last update date"
+    },
+    tags: ["STAGING"],
+    //disabled: true
+}
+
+SELECT
+  SAFE_CAST(product_id AS int64) AS id_product,
+  SAFE_CAST(product_name AS STRING) AS product_name,
+  SAFE_CAST(description AS STRING) AS description,
+  SAFE_CAST(price AS FLOAT64) AS price,
+  SAFE_CAST(category AS STRING) AS category,
+  SAFE_CAST(supplier_id AS int64) AS id_supplier,
+  SAFE_CAST(created_at AS DATE) AS created_date,
+  SAFE_CAST(updated_at AS DATE) AS updated_date
+FROM
+    ${ref("products")}
+QUALIFY row_number() over(partition By id_product)=1
