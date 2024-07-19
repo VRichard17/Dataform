@@ -10,8 +10,8 @@ config {
         price: "price",
         category: "category",
         id_supplier: "supplier identifier",
-        created_at: "creation date",
-        updated_at: "last update date"
+        created_date: "creation date",
+        updated_date: "last update date"
     },
     tags: ["STAGING"],
     //disabled: true

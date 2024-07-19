@@ -4,16 +4,16 @@ config {
     schema: "lab2",
     name: "stg_transactions",
     columns: {
-        transaction_id: "transaction identifier",
-        customer_id: "customer identifier",
-        product_id: "product identifier",
+        id_transaction: "transaction identifier",
+        id_customer: "customer identifier",
+        id_customer: "product identifier",
         quantity: "quantity",
         unite_price: "unit price",
         transaction_date: "transaction date",
         payment_method: "payment method",
         status: "status",
-        created_at: "creation date",
-        updated_at: "last update date"
+        created_date: "creation date",
+        updated_date: "last update date"
     },
     tags: ["STAGING"],
     //disabled: true

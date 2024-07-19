@@ -4,7 +4,7 @@ config {
     schema: "lab2",
     name: "stg_customers",
     columns: {
-        customer_id: "customer identifier",
+        id_customer: "customer identifier",
         first_name: "first name",
         last_name: "last name",
         email: "email address",
@@ -22,7 +22,7 @@ config {
 }
 
 SELECT
-  SAFE_CAST(customer_id AS INT64) AS customer_id,
+  SAFE_CAST(customer_id AS INT64) AS id_customer,
   first_name,
   last_name,
   email,

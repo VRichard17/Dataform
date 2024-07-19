@@ -4,7 +4,7 @@ config {
     schema: "lab2",
     name: "stg_address",
     columns: {
-        address_id: "address identifier",
+        id_address: "address identifier",
         city: "city",
         state_: "state",
         postal_code: "postal code",
