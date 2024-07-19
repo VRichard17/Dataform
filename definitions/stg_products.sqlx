@@ -28,5 +28,4 @@ SELECT
   SAFE_CAST(updated_at AS DATE) AS updated_date
 FROM
     ${ref("products")}
-WHERE price IS NOT NULL
 QUALIFY row_number() over(partition By id_product)=1

@@ -1,0 +1,5 @@
+config {
+    type: "declaration",
+    database: "custom-helix-429513-a8",
+    schema: "lab2"
+}
